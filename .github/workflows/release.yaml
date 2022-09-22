@@ -20,6 +20,10 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v2
         with:
           configuration: ./.github/config/changelog.json
+          owner: "eclipsesource"
+          repo: "jsonforms"
+          fromTag: "v2.5.2"
+          toTag: "v3.0.0"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
