@@ -58,8 +58,14 @@ export class ObjectControlRenderer extends JsonFormsControlWithDetail {
   detailUiSchema: UISchemaElement;
   constructor(jsonformsService: JsonFormsAngularService) {
     super(jsonformsService);
+    console.log('start');
+    console.log(jsonformsService);
   }
   mapAdditionalProps(props: ControlWithDetailProps) {
+    console.log(props.uischema);
+    console.log(props.uischema.scope);
+    console.log(props.path);
+    console.log('additional Props: ');
     this.detailUiSchema = findUISchema(
       props.uischemas,
       props.schema,
@@ -69,6 +75,9 @@ export class ObjectControlRenderer extends JsonFormsControlWithDetail {
       props.uischema,
       props.rootSchema
     );
+    console.log(this.detailUiSchema);
+    //@ts-ignore
+    console.log(this.detailUiSchema.elements[0]);
     if (isEmpty(props.path)) {
       this.detailUiSchema.type = 'VerticalLayout';
     } else {

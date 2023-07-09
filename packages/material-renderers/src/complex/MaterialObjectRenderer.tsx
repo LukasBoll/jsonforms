@@ -63,6 +63,7 @@ export const MaterialObjectRenderer = ({
       ),
     [uischemas, schema, uischema.scope, path, label, uischema, rootSchema]
   );
+  console.log(detailUiSchema);
   return (
     <Hidden xsUp={!visible}>
       <JsonFormsDispatch

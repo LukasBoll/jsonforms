@@ -103,6 +103,8 @@ const addLabel = (layout: Layout, labelName: string) => {
  * @param jsonSchema
  *      the schema to check
  */
+
+/*
 const isCombinator = (jsonSchema: JsonSchema): boolean => {
   return (
     !isEmpty(jsonSchema) &&
@@ -111,7 +113,7 @@ const isCombinator = (jsonSchema: JsonSchema): boolean => {
       !isEmpty(jsonSchema.allOf))
   );
 };
-
+*/
 const generateUISchema = (
   jsonSchema: JsonSchema,
   schemaElements: UISchemaElement[],
@@ -120,6 +122,7 @@ const generateUISchema = (
   layoutType: string,
   rootSchema?: JsonSchema
 ): UISchemaElement => {
+  console.log('generation');
   if (!isEmpty(jsonSchema) && jsonSchema.$ref !== undefined) {
     return generateUISchema(
       resolveSchema(rootSchema, jsonSchema.$ref, rootSchema),
@@ -131,13 +134,13 @@ const generateUISchema = (
     );
   }
 
-  if (isCombinator(jsonSchema)) {
+  /* if (isCombinator(jsonSchema)) {
     const controlObject: ControlElement = createControlElement(currentRef);
     schemaElements.push(controlObject);
 
     return controlObject;
   }
-
+*/
   const types = deriveTypes(jsonSchema);
   if (types.length === 0) {
     return null;
@@ -213,8 +216,12 @@ export const generateDefaultUISchema = (
   layoutType = 'VerticalLayout',
   prefix = '#',
   rootSchema = jsonSchema
-): UISchemaElement =>
-  wrapInLayoutIfNecessary(
+): UISchemaElement => {
+  console.log(
+    generateUISchema(jsonSchema, [], prefix, '', layoutType, rootSchema)
+  );
+  return wrapInLayoutIfNecessary(
     generateUISchema(jsonSchema, [], prefix, '', layoutType, rootSchema),
     layoutType
   );
+};

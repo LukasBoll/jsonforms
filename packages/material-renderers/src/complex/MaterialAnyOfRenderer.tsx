@@ -47,6 +47,7 @@ export const MaterialAnyOfRenderer = ({
   uischema,
   uischemas,
 }: StatePropsOfCombinator) => {
+  console.log('anyOfTriggered');
   const [selectedAnyOf, setSelectedAnyOf] = useState(indexOfFittingSchema || 0);
   const handleChange = useCallback(
     (_ev: any, value: number) => setSelectedAnyOf(value),
@@ -61,6 +62,10 @@ export const MaterialAnyOfRenderer = ({
     path,
     uischemas
   );
+  anyOfRenderInfos.forEach((anyOfRenderInfo) => {
+    console.log(anyOfRenderInfo.schema);
+    console.log(anyOfRenderInfo.uischema);
+  });
 
   return (
     <Hidden xsUp={!visible}>

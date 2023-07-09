@@ -55,6 +55,7 @@ export class GroupLayoutRenderer extends LayoutRenderer<GroupLayout> {
     changeDetectionRef: ChangeDetectorRef
   ) {
     super(jsonFormsService, changeDetectionRef);
+    console.log('Group');
   }
 }
-export const groupLayoutTester: RankedTester = rankWith(1, uiTypeIs('Group'));
+export const groupLayoutTester: RankedTester = rankWith(5, uiTypeIs('Group'));

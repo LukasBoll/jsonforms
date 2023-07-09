@@ -24,35 +24,33 @@
 */
 import { registerExamples } from '../register';
 
-export const schema = {
-  $schema: 'http://json-schema.org/draft-07/schema#',
-
+let uischema;
+const schema = {
   type: 'object',
-
-  properties: {
-    address: {
-      type: 'object',
-      properties: {
-        street_address: { type: 'string' },
-        city: { type: 'string' },
-        state: { type: 'string' },
-      },
-      required: ['street_address', 'city', 'state'],
+  anyOf: [
+    {
+      required: ['Option1'],
     },
-    user: {
-      type: 'object',
-      properties: {
-        name: { type: 'string' },
-        mail: { type: 'string' },
+    {
+      required: ['Option2'],
+    },
+  ],
+  properties: {
+    Option1: {
+      type: 'array',
+      items: {
+        type: 'string',
+        enum: ['A', 'B'],
       },
-      required: ['name', 'mail'],
+    },
+    Option2: {
+      type: 'array',
+      items: {
+        type: 'string',
+        enum: ['C'],
+      },
     },
   },
-};
-
-export const uischemaRoot = {
-  type: 'Control',
-  scope: '#',
 };
 
 export const uischemaNonRoot = {
@@ -90,13 +88,7 @@ export const uischemaNonRoot = {
   ],
 };
 
-const data = {
-  address: {
-    street_address: '1600 Pennsylvania Avenue NW',
-    city: 'Washington',
-    state: 'DC',
-  },
-};
+let data;
 
 registerExamples([
   {
@@ -104,13 +96,13 @@ registerExamples([
     label: 'Object - Root Scope',
     data,
     schema,
-    uischema: uischemaRoot,
+    uischema,
   },
   {
     name: 'object',
     label: 'Object',
     data,
     schema,
-    uischema: uischemaNonRoot,
+    uischema,
   },
 ]);
