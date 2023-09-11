@@ -25,6 +25,8 @@
 import React, { useCallback, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 
+import { ConfirmDialog } from './ConfirmDialog';
+
 import {
   CombinatorRendererProps,
   createCombinatorRenderInfos,
@@ -35,17 +37,7 @@ import {
   RankedTester,
   rankWith,
 } from '@jsonforms/core';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Hidden,
-  Tab,
-  Tabs,
-} from '@mui/material';
+import { Hidden, Tab, Tabs } from '@mui/material';
 import { JsonFormsDispatch, withJsonFormsOneOfProps } from '@jsonforms/react';
 import CombinatorProperties from './CombinatorProperties';
 
@@ -92,6 +84,7 @@ export const MaterialOneOfRenderer = ({
     openNewTab(newSelectedIndex);
     setOpen(false);
   }, [handleChange, createDefaultValue, newSelectedIndex]);
+
   const handleTabChange = useCallback(
     (_event: any, newOneOfIndex: number) => {
       setNewSelectedIndex(newOneOfIndex);
@@ -129,33 +122,13 @@ export const MaterialOneOfRenderer = ({
             />
           )
       )}
-      <Dialog
+      <ConfirmDialog
+        cancel={cancel}
+        confirm={confirm}
+        id={id}
         open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
-        <DialogTitle id='alert-dialog-title'>{'Clear form?'}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id='alert-dialog-description'>
-            Your data will be cleared if you navigate away from this tab. Do you
-            want to proceed?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={cancel} color='primary'>
-            No
-          </Button>
-          <Button
-            onClick={confirm}
-            color='primary'
-            autoFocus
-            id={`oneOf-${id}-confirm-yes`}
-          >
-            Yes
-          </Button>
-        </DialogActions>
-      </Dialog>
+        handleClose={handleClose}
+      />
     </Hidden>
   );
 };
