@@ -77,7 +77,9 @@ export const deriveTypes = (jsonSchema: JsonSchema): string[] => {
   if (!isEmpty(jsonSchema.items)) {
     return ['array'];
   }
-
+  if (!isEmpty(jsonSchema.enum)) {
+    return ['enum'];
+  }
   if (!isEmpty(jsonSchema.allOf)) {
     const allOfType = find(
       jsonSchema.allOf,
