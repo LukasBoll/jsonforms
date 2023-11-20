@@ -23,9 +23,8 @@ jobs:
         run: |
           pnpm i --frozen-lockfile
       #          pnpm audit
-      #- name: Prepare publish
-      #  run: |
-      #    pnpm run preparePublish
-
       - name: versioning
-        run: /bin/bash -c "echo 'yes' | pnpm exec lerna version minor | echo 'yes' && echo 'yes'"
+        run: pnpm exec lerna version minor -y"
+      # -y
+      # peer dependencies alles mit JSON Forms updaten
+      # z.B mit node scrips
