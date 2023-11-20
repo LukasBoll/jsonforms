@@ -29,4 +29,4 @@ jobs:
 
       - name: versioning
         run: |
-          /bin/bash -c "yes | pnpm exec lerna version minor"
+          /bin/bash -c "echo 'yes' | pnpm exec lerna version minor"
