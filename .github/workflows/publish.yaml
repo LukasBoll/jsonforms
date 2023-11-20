@@ -29,4 +29,4 @@ jobs:
 
       - name: versioning
         run: |
-          pnpm exec lerna version
+          pnpm exec lerna version minor
