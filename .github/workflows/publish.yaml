@@ -28,5 +28,4 @@ jobs:
       #    pnpm run preparePublish
 
       - name: versioning
-        run: |
-          /bin/bash -c "echo 'yes' | pnpm exec lerna version minor"
+        run: /bin/bash -c "echo 'yes' | pnpm exec lerna version minor | echo 'yes' && echo 'yes'"
