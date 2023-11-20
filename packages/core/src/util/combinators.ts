@@ -33,6 +33,7 @@ export interface CombinatorSubSchemaRenderInfo {
   label: string;
 }
 
+// important change
 export type CombinatorKeyword = 'anyOf' | 'oneOf' | 'allOf';
 
 export const createCombinatorRenderInfos = (
