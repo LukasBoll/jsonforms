@@ -23,6 +23,11 @@ jobs:
         run: |
           pnpm i --frozen-lockfile
       #          pnpm audit
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
       - name: versioning
         run: pnpm exec lerna version minor -y
       # -y

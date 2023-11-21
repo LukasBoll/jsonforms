@@ -9,7 +9,7 @@ export enum CombinatorTranslationEnum {
   clearDialogAccept = 'clearDialogAccept',
   clearDialogDecline = 'clearDialogDecline',
 }
-
+//(change)
 export type CombinatorTranslations = {
   [key in CombinatorTranslationEnum]?: string;
 };
