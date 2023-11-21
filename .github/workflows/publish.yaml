@@ -24,7 +24,7 @@ jobs:
           pnpm i --frozen-lockfile
       #          pnpm audit
       - name: versioning
-        run: pnpm exec lerna version minor -y"
+        run: pnpm exec lerna version minor -y
       # -y
       # peer dependencies alles mit JSON Forms updaten
       # z.B mit node scrips
