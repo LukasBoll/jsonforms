@@ -1,6 +1,12 @@
 name: publish
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'version'
+        required: true
+        default: 'minor'
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -29,7 +35,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: versioning
-        run: pnpm exec lerna version minor -y
+        run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
       # -y
       # peer dependencies alles mit JSON Forms updaten
       # z.B mit node scrips
