@@ -36,6 +36,18 @@ jobs:
 
       - name: versioning
         run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
-      # -y
+
+      - name: adjust peer dependencies
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '"@jsonforms\/core": ".*"'
+          replace: '@jsonforms/core": "3.2.0-alpha.3'
+          regex: true
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       # peer dependencies alles mit JSON Forms updaten
       # z.B mit node scrips
