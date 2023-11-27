@@ -85,7 +85,7 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    @jsonforms/core": "3.2.0-alpha.3,
+    "@jsonforms/core": "3.2.0-alpha.3",
     "@jsonforms/react": "3.2.0-alpha.3",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "~5.13.0",
@@ -95,7 +95,7 @@
   "devDependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
-    @jsonforms/core": "3.2.0-alpha.3,
+    "@jsonforms/core": "workspace:*",
     "@jsonforms/react": "workspace:*",
     "@mui/icons-material": "~5.11.16",
     "@mui/material": "~5.13.0",
