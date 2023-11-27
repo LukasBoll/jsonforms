@@ -41,7 +41,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: '"@jsonforms\/core": ".*"'
-          replace: '@jsonforms/core": "3.2.0-alpha.3'
+          replace: '@jsonforms/core": "${{ github.event.inputs.next_version }}"'
           regex: true
 
       - name: Commit & Push changes
