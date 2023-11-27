@@ -47,13 +47,13 @@
     "lodash": "^4.17.21"
   },
   "peerDependencies": {
-    "@jsonforms/core": "3.2.0-alpha.3",
+    @jsonforms/core": "v3.7.0",
     "@jsonforms/react": "3.2.0-alpha.3",
     "react": "^16.12.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
-    "@jsonforms/core": "workspace:*",
+    @jsonforms/core": "v3.7.0",
     "@jsonforms/react": "workspace:*",
     "@rollup/plugin-commonjs": "^23.0.3",
     "@rollup/plugin-json": "^5.0.2",
