@@ -1,9 +1,9 @@
 {
   "name": "@jsonforms/examples-react",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "private": true,
   "dependencies": {
-    "@jsonforms/core": "workspace:*",
+    @jsonforms/core": "v3.7.0",
     "@jsonforms/examples": "workspace:*",
     "@jsonforms/react": "workspace:*",
     "@mui/material": "~5.13.0",
