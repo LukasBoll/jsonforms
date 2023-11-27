@@ -38,7 +38,7 @@ jobs:
         run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
 
       - name: adjust peerDependencies
-        run: ls packages/angular && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}"
+        run: cd packages/angular && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}"
 
       #- name: adjust peer dependencies
       #  uses: jacobtomlinson/gha-find-replace@v3
