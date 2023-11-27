@@ -40,7 +40,7 @@ jobs:
       - name: adjust peer dependencies
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: '"@jsonforms\/core": ".*"'
+          find: '(?<=.*)("@jsonforms\/core": ".*")'
           replace: '@jsonforms/core": "${{ github.event.inputs.next_version }}"'
           regex: true
 
