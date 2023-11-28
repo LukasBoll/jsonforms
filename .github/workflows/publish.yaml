@@ -38,7 +38,9 @@ jobs:
         run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
 
       - name: adjust peerDependencies
-        run: cd packages/angular && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}"
+        run: |
+          cd packages/angular && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}"
+          cd ../angular-material && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}" && pnpm pkg set peerDependencies.@jsonforms/angular="${{ github.event.inputs.next_version }}"
 
       #- name: adjust peer dependencies
       #  uses: jacobtomlinson/gha-find-replace@v3
@@ -47,11 +49,9 @@ jobs:
       #    replace: '@jsonforms/core": "${{ github.event.inputs.next_version }}"'
       #    regex: true
 
+      #Über commandline
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: githubaction_publish
-
-      # peer dependencies alles mit JSON Forms updaten
-      # z.B mit node scrips
