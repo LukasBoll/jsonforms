@@ -44,7 +44,7 @@ jobs:
           cd ../vue-vanilla && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}" && pnpm pkg set peerDependencies.@jsonforms/vue="${{ github.event.inputs.next_version }}"
 
       - name: commit
-        run: git commit -a --amend --no-edit
+        run: git commit -a v${{ github.event.inputs.next_version }} --amend --no-edit
 
       - name: push
         run: git push
