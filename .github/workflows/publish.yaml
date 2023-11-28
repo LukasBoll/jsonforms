@@ -29,8 +29,8 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      - name: install
-        run: pnpm i --frozen-lockfile
+      - name: Install
+        run: npm install --no-save
 
       - name: Versioning
         run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
