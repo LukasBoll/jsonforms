@@ -49,7 +49,7 @@ jobs:
       - name: Tag and Commit
         run: |
           git commit --amend --no-edit
-          git tag v${{ github.event.inputs.next_version }}
+          git tag v${{ github.event.inputs.next_version }} -f
 
       - name: push
         run: git push
