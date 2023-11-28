@@ -1,12 +1,11 @@
-name: publish
+name: Publish
 
 on:
   workflow_dispatch:
     inputs:
       next_version:
-        description: 'version'
+        description: 'version (e.g. 3.4.0)'
         required: true
-        default: 'minor'
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -25,19 +24,15 @@ jobs:
           version: 8
           run_install: false
 
-      - name: audit
-        run: |
-          pnpm i --frozen-lockfile
-      #          pnpm audit
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      - name: versioning
+      - name: Versioning
         run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
 
-      - name: adjust peerDependencies
+      - name: Adjust Peerdependencies
         run: |
           cd packages/angular && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}"
           cd ../angular-material && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}" && pnpm pkg set peerDependencies.@jsonforms/angular="${{ github.event.inputs.next_version }}"
@@ -48,8 +43,10 @@ jobs:
           cd ../vue && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}"
           cd ../vue-vanilla && pnpm pkg set peerDependencies.@jsonforms/core="${{ github.event.inputs.next_version }}" && pnpm pkg set peerDependencies.@jsonforms/vue="${{ github.event.inputs.next_version }}"
 
-      - name: commit
-        run: git commit -a v${{ github.event.inputs.next_version }} --amend --no-edit
+      - name: Tag and Commit
+        run: |
+          git commit --amend --no-edit
+          git tag v${{ github.event.inputs.next_version }}
 
       - name: push
         run: git push
