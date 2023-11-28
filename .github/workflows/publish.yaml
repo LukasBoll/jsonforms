@@ -45,3 +45,6 @@ jobs:
 
       - name: commit
         run: git commit -a --amend --no-edit
+
+      - name: push
+        run: git push
