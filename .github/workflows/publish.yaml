@@ -12,6 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -24,13 +29,8 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-
-      - name: Install
-        run: npm install --no-save
+      - name: Install Packages
+        run: pnpm install --no-save
 
       - name: Versioning
         run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
