@@ -1,6 +1,6 @@
 {
   "name": "@jsonforms/examples-app",
-  "version": "3.14.0",
+  "version": "4.1.0",
   "private": true,
   "license": "MIT",
   "type": "module",
