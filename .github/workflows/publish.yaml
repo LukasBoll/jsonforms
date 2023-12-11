@@ -30,7 +30,7 @@ jobs:
           run_install: false
 
       - name: Install Packages
-        run: pnpm install --no-save
+        run: pnpm i --frozen-lockfile
 
       - name: Versioning
         run: pnpm exec lerna version ${{ github.event.inputs.next_version }} --no-push --force-publish -y
