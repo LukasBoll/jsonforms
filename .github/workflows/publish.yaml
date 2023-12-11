@@ -52,4 +52,6 @@ jobs:
           git tag v${{ github.event.inputs.next_version }} -f
 
       - name: push
-        run: git push --follow-tags
+        run: |
+          	git push
+            git push origin v${{ github.event.inputs.next_version }}
