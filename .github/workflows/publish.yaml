@@ -52,4 +52,4 @@ jobs:
           git tag v${{ github.event.inputs.next_version }} -f
 
       - name: push
-        run: git push
+        run: git push --follow-tags
