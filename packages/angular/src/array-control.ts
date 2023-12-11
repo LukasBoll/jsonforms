@@ -36,6 +36,7 @@ export class JsonFormsArrayControl
 {
   protected mapToProps(state: JsonFormsState): StatePropsOfArrayControl {
     const props = mapStateToArrayControlProps(state, this.getOwnProps());
+    //
     return { ...props };
   }
 }
