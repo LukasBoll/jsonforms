@@ -53,5 +53,5 @@ jobs:
 
       - name: push
         run: |
-          	git push
-            git push origin v${{ github.event.inputs.next_version }}
+          git push
+          git push origin v${{ github.event.inputs.next_version }}
